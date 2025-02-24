@@ -1,0 +1,26 @@
+## YAML Template.
+---
+springdoc:
+    swagger-ui:
+        path: /swagger.html
+        enabled: true
+        
+server:
+    port: 48152
+        
+spring:
+    application:
+        name: customer
+    jpa:
+        show-sql: true
+    datasource:
+        url: jdbc:h2:mem:customer
+        username: sa
+        driver-class-name: org.h2.Driver
+        password: qwerty
+    h2:
+        console:
+             enabled: true
+
+custom:
+    activeprofileName: production
