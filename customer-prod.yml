@@ -10,7 +10,7 @@ server:
         
 spring:
     application:
-        name: customer
+        name: businessdomain-customer
     jpa:
         show-sql: true
     datasource:
