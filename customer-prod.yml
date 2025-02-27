@@ -24,3 +24,31 @@ spring:
 
 custom:
     activeprofileName: production
+
+# servidor de Eureka
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        healthcheck.enabled: true
+        serviceUrl:
+            defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
+    health:
+        db:
+            enabled: true
+            show-details: always
+        defaults:
+            enabled: true
+            show-details: always
+            status:
+                order: DOWN, OUT_OF_SERVICE, UP, UNKNOWN
+# End of the file

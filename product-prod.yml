@@ -1,14 +1,55 @@
 ## YAML Template.
 ---
-spring:
-    config:
-        import: product-common.properties
-
-#propiedades específicas de configuración de producto en desarrollo
+springdoc:
+    swagger-ui:
+        path: /swagger.html
+        enabled: true
+        
 server:
     port: 49153
+        
+spring:
+    application:
+        name: businessdomain-product
+    jpa:
+        show-sql: true
+    datasource:
+        url: jdbc:h2:mem:product
+        username: sa
+        driver-class-name: org.h2.Driver
+        password: qwerty
+    h2:
+        console:
+             enabled: true
 
 custom:
     activeprofileName: production
-    
+
+# servidor de Eureka
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        healthcheck.enabled: true
+        serviceUrl:
+            defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
+    health:
+        db:
+            enabled: true
+            show-details: always
+        defaults:
+            enabled: true
+            show-details: always
+            status:
+                order: DOWN, OUT_OF_SERVICE, UP, UNKNOWN
 # End of the file
+
